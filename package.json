@@ -9,3 +9,5 @@
     "bootstrap-sass": "^3.0.0"
   }
 }
+
+npm login --registry=https://npm.pkg.github.com/
