@@ -1,50 +1,48 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
-@section('content')
+@section('content') 
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">Support</div>
+
+                <div class="panel-body">
+
+            <form action="support" method="post" >
+
+            {{ csrf_field() }}
+         
+            <div class="form-group">
+            <p class="hint--top" data-hint="Name" id="input-field">
+                   <input type="text" name="name" class="form-control"  placeholder="Name" required>
+          </p>
+            </div>
+          
+                       <div class="form-group">
+                                   <p class="hint--top" data-hint="Email" id="input-field">
+                   <input type="email" name="email" class="form-control"   placeholder="Email" required>
+                  </p>
+            </div>
+
  
 
- <div class="panel panel-default">
-  <div class="panel-heading"><i class="fa fa-ticket"></i> Support</div>
-  <div class="panel-body">
-    
-  <table class="table">
-  <tr>
-     <th>Name</th>
-     <th>Email</th>
-     <th>Date</th>
-     <th>Actions</th>
-  </tr>
+                        <div class="form-group">
+                                                           <p class="hint--top" data-hint="Message" id="input-field">
+                   <textarea name="message" placeholder="Message" class="form-control" required></textarea>
+                   </p>
+            </div>
 
 
-   @foreach($supports as $support)
-     <tr>
-         <td>{{ $support->name }}</td>
-         <td>{{ $support->email }}</td>
-         <td>{{  date('F d, Y h:m A', strtotime($support->created_at)) }}</td>
-        <td> 
-         <a href="{{ url('admin/view/support/'.$support->id) }}" class="btn btn-default"><i class="fa fa-eye"></i> View</a> 
-         <a href="{{ url('admin/delete/support/'.$support->id) }}" class="btn btn-default"><i class="fa fa-trash"></i> Delete</a> 
-         </td>
-     </tr>
-   @endforeach
+ 
 
 
-@if (count($supports) == 0)
-<tr>
-<td colspan=4>There is no messages.</td>
-</tr>
-@endif
+
+            <input type="submit" class="btn btn-default"  value="Submit">
+            </form>
 
 
-  
-  </table>
-
-
-{{ $supports->render() }}
-
-  </div>
-   
+                </div>
+            </div>
+        </div> 
 </div>
-</div>
-
-@stop
+@endsection
