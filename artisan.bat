@@ -1,2 +1,2 @@
-chmod +x artisan
+@ECHO OFF
 php artisan %*
